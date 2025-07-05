@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kontak - MBC Laboratory</title>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    function initEmailJS() {
+      emailjs.init("YOUR_USER_ID");
+    }
+
+    function sendEmail(event) {
+      event.preventDefault();
+      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', '#contact-form')
+        .then(() => alert('Pesan berhasil dikirim!'), (err) => alert('Gagal: ' + err));
+    }
+    window.onload = initEmailJS;
+  </script>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Kontak</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="layanan.html">Layanan</a>
+      <a href="kontak.html">Kontak</a>
+      <a href="developer.html">Developer</a>
+    </nav>
+  </header>
+  <main>
+    <form id="contact-form" onsubmit="sendEmail(event)">
+      <input type="text" name="user_name" placeholder="Nama" required />
+      <input type="email" name="user_email" placeholder="Email" required />
+      <textarea name="message" placeholder="Pesan" required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+  </main>
+</body>
+</html>
